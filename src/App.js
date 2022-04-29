@@ -6,6 +6,9 @@ import Login from './Pages/Shared/Login/Login';
 import SignUp from './Pages/Shared/SignUp/SignUp';
 import NotFound from './Pages/NotFound/NotFound';
 import Header from './Pages/Shared/Header/Header';
+import Inventory from './Pages/Inventory/Inventory';
+import AboutUs from './Pages/About-us/AboutUs';
+import Brands from './Pages/Brands/Brands';
 
 
 function App() {
@@ -16,6 +19,9 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='/inventory' element={<Inventory></Inventory>}></Route>
+        <Route path='/about-us' element={<AboutUs></AboutUs>}></Route>
+        <Route path='/brands' element={<Brands></Brands>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
