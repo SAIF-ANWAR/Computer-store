@@ -9,6 +9,7 @@ import Header from './Pages/Shared/Header/Header';
 import Inventory from './Pages/Inventory/Inventory';
 import AboutUs from './Pages/About-us/AboutUs';
 import Brands from './Pages/Brands/Brands';
+import Inventories from './Pages/Inventory/Inventories';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='/inventories' element={<Inventories></Inventories>}></Route>
         <Route path='/inventory' element={<Inventory></Inventory>}></Route>
         <Route path='/about-us' element={<AboutUs></AboutUs>}></Route>
         <Route path='/brands' element={<Brands></Brands>}></Route>

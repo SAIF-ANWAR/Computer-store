@@ -7,14 +7,14 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='py-0 saif'>
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='py-0 saif' sticky='top'>
             <Container>
                 <Navbar.Brand as={Link} to="/" href="#home"><img height={60} width={80} src={logo} alt="" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mx-auto">
                         <Nav.Link as={Link} to="/" href="#home">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/inventory" href="#inventory">Inventory</Nav.Link>
+                        <Nav.Link as={Link} to="/inventories" href="#inventories">Inventories</Nav.Link>
                         <Nav.Link as={Link} to="/about-us" href="#about-us">About Us</Nav.Link>
                         <Nav.Link as={Link} to="/brands" href="#brands">Brands</Nav.Link>
                         {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
@@ -26,7 +26,7 @@ const Header = () => {
                         </NavDropdown> */}
                     </Nav>
                     <Nav>
-                        <Button variant="outline-secondary">Login</Button>
+                        <Button as={Link} to="/login" variant="outline-secondary">Login</Button>
                         {/* <button className='btn btn-light'>Login</button> */}
                     </Nav>
                 </Navbar.Collapse>
