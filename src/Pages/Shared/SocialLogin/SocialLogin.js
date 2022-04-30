@@ -6,10 +6,10 @@ const SocialLogin = () => {
     return (
         <div>
             <div className='w-75 mt-4 mx-auto'>
-                <div className='d-flex align-items-center'>
-                    <div style={{ height: '1px' }} className="bg-primary w-50 " ></div>
+                <div className='d-flex align-items-center w-100'>
+                    <div style={{ height: '1px' }} className="bg-primary w-100 " ></div>
                     <div className='px-3'>Or</div>
-                    <div style={{ height: '1px' }} className="bg-primary w-50" ></div>
+                    <div style={{ height: '1px' }} className="bg-primary w-100" ></div>
                 </div>
                 <div className='mt-4'>
                     <Button variant="outline-primary" className='d-block mx-auto mt-2 '>

@@ -1,0 +1,41 @@
+.box {
+    width: 40%;
+}
+
+.form {
+    margin-top: 10px;
+}
+
+.title {
+
+    color: brown;
+}
+
+.signupTitle {
+    margin-bottom: 40px;
+}
+
+/* .title {
+    font-size: 12px;
+    color: brown;
+} */
+
+@media only screen and (max-width: 480px) {
+    .box {
+        width: 100%;
+        margin-top: 2px;
+    }
+
+    .title {
+
+        color: brown;
+    }
+
+    .form {
+        margin-top: 5px;
+    }
+
+    .signupTitle {
+        margin-bottom: 20px;
+    }
+}
