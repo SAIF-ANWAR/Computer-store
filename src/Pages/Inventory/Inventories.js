@@ -9,7 +9,7 @@ const Inventories = () => {
     return (
         <div>
 
-            <div className='inventory-container'>
+            <div className='inventory-container mx-4 my-1'>
                 {
                     products.map(pd => <Inventory key={pd.id} product={pd}></Inventory>)
                 }

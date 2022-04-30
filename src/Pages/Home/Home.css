@@ -1,4 +1,34 @@
-.item {
+/* .item {
     width: 100%;
     height: 100vh;
+} */
+.product-home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+
+}
+
+
+
+.title-header {
+    position: relative;
+}
+
+.title-product::after {
+    content: "";
+    height: 4px;
+    width: 80px;
+    background: #ff523b;
+    position: absolute;
+    bottom: 0;
+    /* top: 80%; */
+    left: 47%;
+}
+
+@media only screen and (max-width: 480px) {
+    .product-home {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
