@@ -1,16 +1,14 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import useProduct from '../../Hooks/useProduct';
 import './Inventories.css'
 
 
 const InventoriesDetails = ({ product }) => {
     const navigate = useNavigate()
-    const [laptop, setLaptop] = useProduct()
 
     const handleManageButton = id => {
-        setLaptop(id)
+
         navigate(`/inventory/${id}`)
     }
     return (
@@ -29,7 +27,7 @@ const InventoriesDetails = ({ product }) => {
                         <small>Quantity: {product?.quantity}</small>
                     </div>
                     <div>
-                        <Button onClick={() => handleManageButton(product.id)} className='px-3' variant="outline-primary">Manage</Button>
+                        <Button onClick={() => handleManageButton(product._id)} className='px-3' variant="outline-primary">Manage</Button>
                     </div>
                 </div>
             </div>
