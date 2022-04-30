@@ -1,17 +1,19 @@
 import React from 'react';
 import useProducts from '../../Hooks/useProducts';
-import Inventory from './Inventory';
-import './Inventories.css'
-const Inventories = () => {
-    const [products, setProducts] = useProducts()
+import './Inventories.css';
+import InventoriesDetails from './InventoriesDetails';
 
-    console.log(products)
+const Inventories = () => {
+    const [products] = useProducts()
+
     return (
         <div>
 
             <div className='inventory-container mx-4 my-1'>
                 {
-                    products.map(pd => <Inventory key={pd.id} product={pd}></Inventory>)
+                    products.map(pd =>
+                        <InventoriesDetails key={pd.id} product={pd}></InventoriesDetails>
+                    )
                 }
             </div>
         </div>

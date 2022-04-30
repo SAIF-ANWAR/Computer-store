@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './SignUp.css'
 
@@ -16,6 +17,9 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     if (user) {
         navigate('/')
+    }
+    if (loading) {
+        return <Loading></Loading>
     }
     const handleSignUp = event => {
         event.preventDefault()

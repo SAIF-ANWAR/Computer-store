@@ -1,13 +1,15 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import login from '../../../images/login.jpg';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Login.css'
+import Loading from '../Loading/Loading';
 
 const Login = () => {
+    const location = useLocation()
     const navigate = useNavigate()
     const [
         signInWithEmailAndPassword,
@@ -16,6 +18,11 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    if (loading) {
+        return <Loading></Loading>
+    }
+
+    let from = location.state?.from?.pathname || "/";
 
     const handleLogin = event => {
         event.preventDefault()
@@ -26,7 +33,7 @@ const Login = () => {
     }
 
     if (user) {
-        navigate('/')
+        navigate(from, { replace: true })
     }
     return (
         <div className='container py-5'>
