@@ -1,13 +1,19 @@
 import React from 'react';
 import useProducts from '../../Hooks/useProducts';
-
+import Inventory from './Inventory';
+import './Inventories.css'
 const Inventories = () => {
     const [products, setProducts] = useProducts()
 
-
+    console.log(products)
     return (
         <div>
-            <h1>Inventories: {products.length}</h1>
+
+            <div className='inventory-container'>
+                {
+                    products.map(pd => <Inventory key={pd.id} product={pd}></Inventory>)
+                }
+            </div>
         </div>
     );
 };

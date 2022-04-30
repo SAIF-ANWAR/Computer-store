@@ -48,7 +48,7 @@ const Login = () => {
                                 <p>Don't have an account?</p>
                                 <Link to="/signup">Create account</Link>
                             </div>
-                            <Button variant="outline-primary" type="submit">
+                            <Button className="px-3" variant="outline-primary" type="submit">
                                 Login
                             </Button>
                         </Form>
