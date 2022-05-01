@@ -1,10 +1,13 @@
 import React from 'react';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 const AddInventory = () => {
+    const [user, loading, error] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data)
-        const url = `http://localhost:5000/laptops`
+        const url = `https://still-bastion-50699.herokuapp.com/laptops`
         fetch(url, {
             method: "POST",
             headers: {
@@ -17,12 +20,14 @@ const AddInventory = () => {
     };
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input className='mb-2' placeholder='Name of the Product' {...register("title", { required: true, maxLength: 50 })} />
-                <input className='mb-2' placeholder='Price' type="text" {...register("price")} />
-                <input className='mb-2' placeholder='Quantity' type="text" {...register("quantity")} />
-                <input className='mb-2' placeholder='Photo Url' type="text" {...register("img")} />
-                <input className='mb-2' type="submit" />
+            <h2 className='text-center mt-5'>Add a new item</h2>
+            <form className='d-flex flex-column w-50 mx-auto mt-5' onSubmit={handleSubmit(onSubmit)}>
+                <input className='mb-2 py-2 px-3' placeholder='Name of the Product' {...register("title", { required: true, maxLength: 50 })} />
+                <input className='mb-2  py-2 px-3' placeholder='Price' type="text" {...register("price")} />
+                <input className='mb-2  py-2 px-3' placeholder='Quantity' type="text" {...register("quantity")} />
+                <input className='mb-2  py-2 px-3' placeholder='Photo Url' type="text" {...register("img")} />
+                <input className='mb-2  py-2 px-3' placeholder='Your Email' type="email" value={user?.email} {...register("email")} />
+                <input className='mb-2 py-2 fs-5 btn btn-outline-primary' type="submit" />
             </form>
         </div>
     );

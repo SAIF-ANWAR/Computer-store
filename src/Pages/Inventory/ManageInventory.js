@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+
 import useProducts from '../../Hooks/useProducts';
 
 const ManageInventory = () => {
+
     const navigate = useNavigate()
     const [products, setProducts] = useProducts()
     const handleAddInventory = () => {
@@ -12,7 +14,7 @@ const ManageInventory = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {
-            const url = `http://localhost:5000/laptops/${id}`
+            const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
             fetch(url, {
                 method: "DELETE"
             })
@@ -51,9 +53,7 @@ const ManageInventory = () => {
                                     <td><Button onClick={() => handleDelete(product._id)} variant="outline-danger">Delete</Button>
                                         <Button onClick={handleAddInventory} variant="outline-success">Add New Item</Button>
                                     </td>
-
                                 </tr>
-
                             </tbody>
                         </>
                         )

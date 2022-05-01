@@ -8,9 +8,9 @@ import './Inventories.css'
 const Inventory = () => {
     const { id } = useParams()
     const navigate = useNavigate()
-    const [item, setItem] = useProducts()
     const [laptop, setLaptop] = useState({})
-    console.log(laptop)
+    const [delivered, setDelivered] = useState({})
+
     useEffect(() => {
         const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url)
@@ -21,10 +21,31 @@ const Inventory = () => {
     let newQuantity = itemQuantity - 1
     const handleDelivered = () => {
         const result = newQuantity--
-
+        console.log(result)
     }
     const handleManageInventories = () => {
         navigate('/manageInventories')
+    }
+    const handleRestock = () => {
+        const quantity = window.prompt("Enter the quantity", "")
+        const output = { quantity }
+        console.log(output)
+        if (isNaN(quantity) === true) {
+            window.alert("please enter value")
+        }
+        const url = `http://localhost:5000/laptops/${id}`
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(output)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data)
+            })
+
     }
     return (
         <div >
@@ -63,11 +84,10 @@ const Inventory = () => {
                                     </div>
                                     <div className="card-header">
                                         <Button onClick={handleDelivered} variant='outline-primary'>Delivered</Button>
-                                        <Button variant='outline-primary px-3 mx-3'>Restock</Button>
+                                        <Button onClick={handleRestock} variant='outline-primary px-3 mx-3'>Restock</Button>
                                     </div>
                                 </div>
-                                {/* <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> */}
+                                <p className="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                             </div>
                         </div>
                     </div>
