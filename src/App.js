@@ -11,6 +11,8 @@ import AboutUs from './Pages/About-us/AboutUs';
 import Brands from './Pages/Brands/Brands';
 import Inventories from './Pages/Inventory/Inventories';
 import RequireAuth from './Pages/Shared/RequireAuth/RequireAuth';
+import ManageInventory from './Pages/Inventory/ManageInventory';
+import AddInventory from './Pages/Inventory/AddInventory';
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
             <Inventory></Inventory>
           </RequireAuth>
         }></Route>
+        <Route path='/manageInventories' element={<ManageInventory></ManageInventory>}></Route>
+        <Route path='/AddInventory' element={<AddInventory></AddInventory>}></Route>
         <Route path='/about-us' element={<AboutUs></AboutUs>}></Route>
         <Route path='/brands' element={<Brands></Brands>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

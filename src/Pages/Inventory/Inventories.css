@@ -8,7 +8,9 @@
     width: 100%;
 }
 
-
+.product-info img {
+    width: 60%;
+}
 
 @media only screen and (max-width: 480px) {
     .inventory-container {

@@ -1,51 +1,69 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Table } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { useNavigate, useParams } from 'react-router-dom';
+import useProducts from '../../Hooks/useProducts';
 
 import './Inventories.css'
 
 const Inventory = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
+    const [item, setItem] = useProducts()
     const [laptop, setLaptop] = useState({})
     console.log(laptop)
     useEffect(() => {
-        const url = `http://localhost:5000/laptops/${id}`
+        const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setLaptop(data))
     }, [id])
+    let itemQuantity = parseFloat(laptop?.quantity)
+    let newQuantity = itemQuantity - 1
+    const handleDelivered = () => {
+        const result = newQuantity--
 
+    }
+    const handleManageInventories = () => {
+        navigate('/manageInventories')
+    }
     return (
         <div >
-            <div className='product-info'>
-                <div class="card text-center mb-3" style={{ "max- width": "540px" }}>
-                    <div class="row g-0">
-                        <div class="col-md-6">
-                            <img src={laptop.img} class="img-fluid rounded-start" alt="..." />
-
+            <div className='product-info '>
+                <div className="card text-center mb-3" >
+                    <div className="row g-0">
+                        <div className="col-md-6 col-sm-12">
+                            <img src={laptop.img} className="img-fluid rounded-start  border-bottom" alt="..." />
+                            <h3 className="card-title">{laptop.title}</h3>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card-body mt-3">
-                                <h3 class="card-title pb-2">Item: {laptop.title}</h3>
-                                <div class="card w-75 mx-auto text-start " style={{ "width": "18rem" }}>
-                                    <div class="card-header">
+                        <div className="col-md-6 col-sm-12">
+                            <div className="card-body mt-3">
+
+                                <div className="card w-75 mx-auto text-start " style={{ "width": "18rem" }}>
+                                    <div className="card-header">
+                                        Name :  {laptop.title}
+                                    </div>
+                                    <div className="card-header">
                                         Supplied By :  {laptop.Supplier}
                                     </div>
-                                    <div class="card-header">
+                                    <div className="card-header">
                                         Description :
                                     </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"> <small>Model: {laptop.description?.model} </small>  </li>
-                                        <li class="list-group-item"> <small>Processor: {laptop.description?.processor}  </small> </li>
-                                        <li class="list-group-item"> <small> Memory: {laptop.description?.memory}  </small></li>
-                                        <li class="list-group-item"> <small> Storage: {laptop.description?.storage}  </small></li>
-                                        <li class="list-group-item"> <small>Display: {laptop.description?.display} </small>  </li>
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item"> <small>Model: {laptop.description?.model} </small>  </li>
+                                        <li className="list-group-item"> <small>Processor: {laptop.description?.processor}  </small> </li>
+                                        <li className="list-group-item"> <small> Memory: {laptop.description?.memory}  </small></li>
+                                        <li className="list-group-item"> <small> Storage: {laptop.description?.storage}  </small></li>
+                                        <li className="list-group-item"> <small>Display: {laptop.description?.display} </small>  </li>
                                     </ul>
-                                    <div class="card-header">
+                                    <div className="card-header">
                                         Price : $ {laptop.price}
                                     </div>
-                                    <div class="card-header">
+                                    <div className="card-header">
                                         Quantity :  {laptop.quantity}
+                                    </div>
+                                    <div className="card-header">
+                                        <Button onClick={handleDelivered} variant='outline-primary'>Delivered</Button>
+                                        <Button variant='outline-primary px-3 mx-3'>Restock</Button>
                                     </div>
                                 </div>
                                 {/* <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -55,34 +73,7 @@ const Inventory = () => {
                     </div>
                 </div>
             </div>
-
-            {/* <div className='cotnainer  p-5 table-responsive-sm'>
-                <Table className='table table-bordered  align-middle' responsive="sm">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Supplied By</th>
-                            <th>Delivered?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td><Button variant="outline-primary">Delivered</Button></td>
-                        </tr>
-
-                    </tbody>
-                </Table>
-            </div> */}
+            <Button className='d-flex mx-auto' onClick={handleManageInventories} variant='outline-primary'> Manage Inventories</Button>
         </div >
     );
 };
