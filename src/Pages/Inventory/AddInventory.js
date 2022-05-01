@@ -2,7 +2,19 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 const AddInventory = () => {
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data)
+        const url = `http://localhost:5000/laptops`
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => console.log(result))
+    };
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>

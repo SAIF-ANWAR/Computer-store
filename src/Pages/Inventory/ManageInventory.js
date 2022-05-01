@@ -9,6 +9,20 @@ const ManageInventory = () => {
     const handleAddInventory = () => {
         navigate('/AddInventory')
     }
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure?')
+        if (proceed) {
+            const url = `http://localhost:5000/laptops/${id}`
+            fetch(url, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const remaining = products.filter(product => product._id !== id)
+                    setProducts(remaining)
+                })
+        }
+    }
     return (
         <div>
             <div className='cotnainer  p-5 table-responsive-sm'>
@@ -26,7 +40,6 @@ const ManageInventory = () => {
                     </thead>
                     {
                         products.map(product => <>
-
                             <tbody>
                                 <tr>
                                     {/* <td>{product._id}</td> */}
@@ -35,8 +48,8 @@ const ManageInventory = () => {
                                     <td>{product?.price}</td>
                                     <td>{product?.quantity}</td>
                                     {/* <td>Table cell</td> */}
-                                    <td><Button variant="outline-primary">Delete</Button>
-                                        <Button onClick={handleAddInventory} variant="outline-primary">Add New Item</Button>
+                                    <td><Button onClick={() => handleDelete(product._id)} variant="outline-danger">Delete</Button>
+                                        <Button onClick={handleAddInventory} variant="outline-success">Add New Item</Button>
                                     </td>
 
                                 </tr>
@@ -50,7 +63,7 @@ const ManageInventory = () => {
                 {/* <Button>Add new Item</Button> */}
 
             </div>
-        </div>
+        </div >
     );
 };
 
