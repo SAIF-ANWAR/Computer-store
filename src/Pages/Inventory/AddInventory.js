@@ -6,7 +6,7 @@ const AddInventory = () => {
     const [user, loading, error] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)
         const url = `https://still-bastion-50699.herokuapp.com/laptops`
         fetch(url, {
             method: "POST",
@@ -16,7 +16,12 @@ const AddInventory = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(result => console.log(result))
+            .then(result => {
+                if (result.acknowledged === true) {
+                    alert("Product successfully added")
+                }
+            })
+
     };
     return (
         <div>

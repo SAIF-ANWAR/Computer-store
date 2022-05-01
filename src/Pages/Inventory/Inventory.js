@@ -8,8 +8,8 @@ import './Inventories.css'
 const Inventory = () => {
     const { id } = useParams()
     const navigate = useNavigate()
+    const [products] = useProducts()
     const [laptop, setLaptop] = useState({})
-    const [delivered, setDelivered] = useState({})
 
     useEffect(() => {
         const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
@@ -17,14 +17,15 @@ const Inventory = () => {
             .then(res => res.json())
             .then(data => setLaptop(data))
     }, [id])
+
     let itemQuantity = parseFloat(laptop?.quantity)
     let quantityInEveryClick = itemQuantity - 1
-    const handleDelivered = () => {
+    const handleDelivered = (id) => {
         const result = quantityInEveryClick--
         const quantity = result.toString()
         const outPut = { quantity }
         console.log(outPut)
-        const url = `http://localhost:5000/laptops/${id}`
+        const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url, {
             method: "PUT",
             headers: {
@@ -34,6 +35,10 @@ const Inventory = () => {
         })
             .then(res => res.json())
             .then(data => {
+                let updatedProduct = products.find(product => product.quantity === laptop.quantity)
+                updatedProduct.quantity = result.toString()
+                setLaptop(updatedProduct)
+                console.log(updatedProduct)
                 console.log('success', data)
             })
     }
@@ -45,7 +50,7 @@ const Inventory = () => {
         if (isNaN(quantity) === true) {
             window.alert("please enter value")
         }
-        const url = `http://localhost:5000/laptops/${id}`
+        const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url, {
             method: "PUT",
             headers: {
@@ -55,6 +60,9 @@ const Inventory = () => {
         })
             .then(res => res.json())
             .then(data => {
+                let updatedProduct = products.find(product => product.quantity === laptop.quantity)
+                updatedProduct.quantity = quantity
+                setLaptop(updatedProduct)
                 console.log('success', data)
             })
     }
@@ -97,7 +105,7 @@ const Inventory = () => {
                                         Quantity :  {laptop.quantity}
                                     </div>
                                     <div className="card-header">
-                                        <Button onClick={handleDelivered} variant='outline-primary'>Delivered</Button>
+                                        <Button onClick={() => handleDelivered(laptop._id)} variant='outline-primary'>Delivered</Button>
                                         <Button onClick={handleRestock} variant='outline-primary px-3 mx-3'>Restock</Button>
                                     </div>
                                 </div>
