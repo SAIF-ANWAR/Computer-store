@@ -13,6 +13,7 @@ import Inventories from './Pages/Inventory/Inventories';
 import RequireAuth from './Pages/Shared/RequireAuth/RequireAuth';
 import ManageInventory from './Pages/Inventory/ManageInventory';
 import AddInventory from './Pages/Inventory/AddInventory';
+import MyItems from './MyItems/MyItems';
 
 
 function App() {
@@ -29,8 +30,13 @@ function App() {
             <Inventory></Inventory>
           </RequireAuth>
         }></Route>
-        <Route path='/manageInventories' element={<ManageInventory></ManageInventory>}></Route>
+        <Route path='/manageInventories' element={
+          <RequireAuth>
+            <ManageInventory></ManageInventory>
+          </RequireAuth>
+        }></Route>
         <Route path='/AddInventory' element={<AddInventory></AddInventory>}></Route>
+        <Route path='/myItems' element={<MyItems></MyItems>}></Route>
         <Route path='/about-us' element={<AboutUs></AboutUs>}></Route>
         <Route path='/brands' element={<Brands></Brands>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

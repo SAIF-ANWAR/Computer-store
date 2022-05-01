@@ -31,27 +31,23 @@ const ManageInventory = () => {
                 <Table className='table table-bordered  align-middle' responsive="sm">
                     <thead>
                         <tr>
-                            {/* <th>ID</th> */}
                             <th>Name</th>
                             <th>Model</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            {/* <th>Supplied By</th> */}
-                            <th>Remove Item?</th>
+                            <th>Edit Stock?</th>
                         </tr>
                     </thead>
                     {
                         products.map(product => <>
                             <tbody>
                                 <tr>
-                                    {/* <td>{product._id}</td> */}
                                     <td>{product?.title}</td>
                                     <td>{product.description?.model}</td>
                                     <td>{product?.price}</td>
                                     <td>{product?.quantity}</td>
-                                    {/* <td>Table cell</td> */}
-                                    <td><Button onClick={() => handleDelete(product._id)} variant="outline-danger">Delete</Button>
-                                        <Button onClick={handleAddInventory} variant="outline-success">Add New Item</Button>
+                                    <td className='d-flex mx-auto w-75  border-0' ><Button onClick={() => handleDelete(product._id)} variant="outline-danger">Delete</Button>
+                                        <Button className='mx-3 px-5' onClick={handleAddInventory} variant="outline-success">Add New Item</Button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -59,8 +55,6 @@ const ManageInventory = () => {
                         )
                     }
                 </Table>
-
-                {/* <Button>Add new Item</Button> */}
 
             </div>
         </div >

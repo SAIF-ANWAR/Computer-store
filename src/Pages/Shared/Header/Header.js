@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='py-0 saif' sticky='top'>
             <Container>
-                <Navbar.Brand as={Link} to="/" href="#home"><img height={60} width={80} src={logo} alt="" /></Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" href="#home"><img height={70} width={80} src={logo} alt="" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mx-auto">
@@ -32,7 +32,13 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         {
-                            user ? <Button className='px-4 fs-6' onClick={() => signOut(auth)} as={Link} to="/login" variant="outline-secondary">Sign Out</Button>
+                            user && <><Nav.Link as={Link} to="/manageInventories" href="#manageInventories"><small>Manage Inventories</small></Nav.Link>
+                                <Nav.Link as={Link} to="/AddInventory" href="#AddInventory"><small>Add Inventory</small></Nav.Link>
+                                <Nav.Link as={Link} to="/myItems" href="#AddInventory"><small>My Items</small></Nav.Link>
+                            </>
+                        }
+                        {
+                            user ? <Button className='px-4 fs-6 ' onClick={() => signOut(auth)} as={Link} to="/login" variant="outline-secondary">Logout</Button>
                                 : <Button className='px-4 fs-6' as={Link} to="/login" variant="outline-secondary">Login</Button>
                         }
                         {/* <button className='btn btn-light'>Login</button> */}
