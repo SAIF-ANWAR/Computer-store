@@ -18,14 +18,26 @@ const Inventory = () => {
             .then(data => setLaptop(data))
     }, [id])
     let itemQuantity = parseFloat(laptop?.quantity)
-    let newQuantity = itemQuantity - 1
+    let quantityInEveryClick = itemQuantity - 1
     const handleDelivered = () => {
-        const result = newQuantity--
-        console.log(result)
+        const result = quantityInEveryClick--
+        const quantity = result.toString()
+        const outPut = { quantity }
+        console.log(outPut)
+        const url = `http://localhost:5000/laptops/${id}`
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(outPut)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data)
+            })
     }
-    const handleManageInventories = () => {
-        navigate('/manageInventories')
-    }
+
     const handleRestock = () => {
         const quantity = window.prompt("Enter the quantity", "")
         const output = { quantity }
@@ -45,7 +57,9 @@ const Inventory = () => {
             .then(data => {
                 console.log('success', data)
             })
-
+    }
+    const handleManageInventories = () => {
+        navigate('/manageInventories')
     }
     return (
         <div >
@@ -87,7 +101,7 @@ const Inventory = () => {
                                         <Button onClick={handleRestock} variant='outline-primary px-3 mx-3'>Restock</Button>
                                     </div>
                                 </div>
-                                <p className="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                             </div>
                         </div>
                     </div>
