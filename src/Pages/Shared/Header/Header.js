@@ -1,6 +1,6 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
@@ -21,14 +21,16 @@ const Header = () => {
                         <Nav.Link as={Link} to="/" href="#home">Home</Nav.Link>
                         <Nav.Link as={Link} to="/inventories" href="#inventories">Inventories</Nav.Link>
                         <Nav.Link as={Link} to="/about-us" href="#about-us">About Us</Nav.Link>
-                        <Nav.Link as={Link} to="/brands" href="#brands">Brands</Nav.Link>
-                        {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown> */}
+                        {/* <Nav.Link as={Link} to="/brands" href="#brands">Brands</Nav.Link> */}
+                        <NavDropdown title="Brands" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">Dell</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">HP</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">lenovo</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.4">Asus</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.5">Chuwi</NavDropdown.Item>
+                            {/* <NavDropdown.Divider />
+                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
+                        </NavDropdown>
                     </Nav>
                     <Nav>
                         {

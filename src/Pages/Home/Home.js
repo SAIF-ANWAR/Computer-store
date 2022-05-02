@@ -6,6 +6,8 @@ import banner2 from '../../images/banner/banner2.jpg';
 import banner3 from '../../images/banner/banner3.jpg';
 import Performance from './Performance';
 import './Home.css'
+import TopBrands from './TopBrands';
+import Footer from '../Shared/Footer/Footer';
 
 const Home = () => {
     const navigate = useNavigate()
@@ -42,7 +44,7 @@ const Home = () => {
                 </Carousel>
             </div>
             <div className='title-header my-2'>
-                <p className='title-product d-block text-center fs-2'>Items</p>
+                <p className='title-product d-block text-center fs-2 pb-2 pt-4'>Laptops</p>
             </div>
             <div className='container py-3'>
                 <div className='product-home'>
@@ -72,8 +74,10 @@ const Home = () => {
                     <Link to="/manageInventories" className=' mt-2 py-2 px-5 fs-5 btn btn-link' onClick={handleManageInventories} variant='outline-primary'> Manage Inventories</Link>
                 </div>
             </div>
-
+            <TopBrands></TopBrands>
             <Performance></Performance>
+            <Footer></Footer>
+
         </div>
     );
 };

@@ -7,13 +7,13 @@ import './Home.css'
 const Performance = () => {
     return (
         <div className='container '>
-            <div className='row gx-4 mt-2 mb-3'>
+            <div className='row gx-4 mt-2 mb-3  py-3 shadow-sm'>
                 <div className='col-md-6 p-3 '>
-                    <div id='performance' style={{ backgroundColor: "#000000" }} className={`text-light d-flex justify-content-start aligh-items-center px-2 shadow-lg`}>
+                    <div id='performance' style={{ backgroundColor: "#909094" }} className={`text-dark d-flex justify-content-start aligh-items-center px-2 border-0 shadow-lg`}>
                         <img style={{ height: "100px" }} width={100} src={logo} alt="" />
                         <div className='d-flex flex-column justify-content-start py-5 px-3'>
                             <span className='fs-4 fw-normal pb-1'>Discover best rated items</span>
-                            <Link style={{ color: "#959599" }} to="/" href="#" className='fw-normal'>Browse now</Link>
+                            <Link to="/" className="text-dark fw-normal" href="#" >Browse now</Link>
                         </div>
                     </div>
                 </div>
