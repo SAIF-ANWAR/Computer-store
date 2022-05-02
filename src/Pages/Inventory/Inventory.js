@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import useProducts from '../../Hooks/useProducts';
+import MyItems from '../../MyItems/MyItems';
 
 import './Inventories.css'
 
@@ -16,7 +17,7 @@ const Inventory = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setLaptop(data))
-    }, [id])
+    }, [id, laptop?.quantity])
 
     let itemQuantity = parseFloat(laptop?.quantity)
     let quantityInEveryClick = itemQuantity - 1
@@ -36,10 +37,13 @@ const Inventory = () => {
             .then(res => res.json())
             .then(data => {
                 let updatedProduct = products.find(product => product.quantity === laptop.quantity)
-                updatedProduct.quantity = result.toString()
-                setLaptop(updatedProduct)
-                console.log(updatedProduct)
-                console.log('success', data)
+                let newQuantity = result.toString()
+                const newObject = { ...updatedProduct, quantity: newQuantity }
+                setLaptop(newObject)
+                // updatedProduct.quantity = result.toString()
+                // setLaptop(updatedProduct)
+                // console.log(updatedProduct)
+                // console.log('success', data)
             })
     }
 
@@ -61,9 +65,13 @@ const Inventory = () => {
             .then(res => res.json())
             .then(data => {
                 let updatedProduct = products.find(product => product.quantity === laptop.quantity)
-                updatedProduct.quantity = quantity
-                setLaptop(updatedProduct)
+                // updatedProduct.quantity = quantity
+                // setLaptop(updatedProduct)
                 console.log('success', data)
+                let newQuantity = quantity
+                const newObject = { ...updatedProduct, quantity: newQuantity }
+                setLaptop(newObject)
+                console.log(newObject)
             })
     }
     const handleManageInventories = () => {
@@ -99,10 +107,10 @@ const Inventory = () => {
                                         <li className="list-group-item"> <small>Display: {laptop.description?.display} </small>  </li>
                                     </ul>
                                     <div className="card-header">
-                                        Price : $ {laptop.price}
+                                        Price : $ {laptop?.price}
                                     </div>
                                     <div className="card-header">
-                                        Quantity :  {laptop.quantity}
+                                        Quantity :  {laptop?.quantity}
                                     </div>
                                     <div className="card-header">
                                         <Button onClick={() => handleDelivered(laptop._id)} variant='outline-primary'>Delivered</Button>
