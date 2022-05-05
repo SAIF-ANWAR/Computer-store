@@ -15,6 +15,7 @@ import ManageInventory from './Pages/Inventory/ManageInventory';
 import AddInventory from './Pages/Inventory/AddInventory';
 import MyItems from './Pages/MyItems/MyItems'
 import Footer from './Pages/Shared/Footer/Footer';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path='/myItems' element={<MyItems></MyItems>}></Route>
         <Route path='/about-us' element={<AboutUs></AboutUs>}></Route>
         <Route path='/brands' element={<Brands></Brands>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

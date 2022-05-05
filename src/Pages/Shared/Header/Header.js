@@ -24,8 +24,7 @@ const Header = () => {
                     <Nav className="mx-auto">
                         <Nav.Link as={Link} to="/" href="#home">Home</Nav.Link>
                         <Nav.Link as={Link} to="/inventories" href="#inventories">Inventories</Nav.Link>
-                        <Nav.Link as={Link} to="/about-us" href="#about-us">About Us</Nav.Link>
-                        {/* <Nav.Link as={Link} to="/brands" href="#brands">Brands</Nav.Link> */}
+                        <Nav.Link as={Link} to="/blogs" href="#blogs">Blogs</Nav.Link>
                         <NavDropdown title="Brands" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Dell</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">HP</NavDropdown.Item>
@@ -33,6 +32,7 @@ const Header = () => {
                             <NavDropdown.Item href="#action/3.4">Asus</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.5">Chuwi</NavDropdown.Item>
                         </NavDropdown>
+                        <Nav.Link as={Link} to="/about-us" href="#about-us">About Us</Nav.Link>
                     </Nav>
                     <Nav>
                         {
