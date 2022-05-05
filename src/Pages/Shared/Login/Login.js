@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import login from '../../../images/login.jpg';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Login.css'
 import Loading from '../Loading/Loading';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const location = useLocation()
     const navigate = useNavigate()
+    const emailRef = useRef('')
     const [
         signInWithEmailAndPassword,
         user,
@@ -18,6 +21,11 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+    if (sending) {
+        return <Loading></Loading>
+    }
     if (loading) {
         return <Loading></Loading>
     }
@@ -30,6 +38,17 @@ const Login = () => {
         const password = event.target.password.value
 
         signInWithEmailAndPassword(email, password)
+    }
+    const resetPassword = async (event) => {
+        event.preventDefault()
+        const email = emailRef.current?.value
+        if (email) {
+            await sendPasswordResetEmail(email)
+            toast("Email Sent")
+        }
+        else {
+            toast("Please Enter Your Email")
+        }
     }
 
     if (user) {
@@ -46,21 +65,23 @@ const Login = () => {
                         <Form onSubmit={handleLogin} className=' mt-3 '>
                             <h3 className='mb-3'>Please Log In</h3>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control name="email" type="email" placeholder="Enter email" />
+                                <Form.Control className='py-2' ref={emailRef} name="email" type="email" placeholder="Enter email" />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Control name="password" type="password" placeholder="Password" />
+                                <Form.Control className='py-2' name="password" type="password" placeholder="Password" />
                             </Form.Group>
+                            <p className='text-danger'>{error?.message}</p>
                             <div className='d-flex justify-content-between px-1'>
-                                <p>Don't have an account?</p>
-                                <Link to="/signup">Create account</Link>
+                                <p>Forgot Password?</p>
+                                <Link onClick={resetPassword} className="text-decoration-none" to="/login">Reset Password</Link>
                             </div>
-                            <Button className="px-3" variant="outline-primary" type="submit">
-                                Login
+                            <Button className="px-4 mb-4" variant="outline-primary" type="submit">
+                                <span className='fs-6'>Login</span>
                             </Button>
                         </Form>
                     </div>
                     <SocialLogin></SocialLogin>
+                    <ToastContainer></ToastContainer>
                 </div>
             </div>
         </div>

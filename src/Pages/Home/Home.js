@@ -5,15 +5,24 @@ import banner1 from '../../images/banner/banner1.jpg';
 import banner2 from '../../images/banner/banner2.jpg';
 import banner3 from '../../images/banner/banner3.jpg';
 import Performance from './Performance';
-import './Home.css'
+import './Home.css';
 import TopBrands from './TopBrands';
-import Footer from '../Shared/Footer/Footer';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Loading from '../Shared/Loading/Loading';
 
 const Home = () => {
     const navigate = useNavigate()
     const [products] = useProducts()
+    const [loading] = useAuthState(auth);
+    if (loading) {
+        return <Loading></Loading>
+    }
     const handleManageInventories = () => {
         navigate('/manageInventories')
+    }
+    const handleManageButton = id => {
+        navigate(`/inventory/${id}`)
     }
     return (
         <div>
@@ -63,7 +72,7 @@ const Home = () => {
                                     <small>Quantity: {product?.quantity}</small>
                                 </div>
                                 <div>
-                                    <Button className='px-3 ' variant="outline-primary">Manage</Button>
+                                    <Button onClick={() => handleManageButton(product._id)} className='px-3 ' variant="outline-primary">Manage</Button>
                                 </div>
                             </div>
                         </div>)
@@ -76,7 +85,7 @@ const Home = () => {
             </div>
             <TopBrands></TopBrands>
             <Performance></Performance>
-            <Footer></Footer>
+
 
         </div>
     );

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import useProducts from '../../Hooks/useProducts';
-import MyItems from '../../MyItems/MyItems';
 
 import './Inventories.css'
 

@@ -6,7 +6,7 @@ const AddInventory = () => {
     const [user, loading, error] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        // console.log(data)
+        console.log(data)
         const url = `https://still-bastion-50699.herokuapp.com/laptops`
         fetch(url, {
             method: "POST",
@@ -31,6 +31,7 @@ const AddInventory = () => {
                 <input className='mb-2  py-2 px-3' placeholder='Price' type="text" {...register("price")} />
                 <input className='mb-2  py-2 px-3' placeholder='Quantity' type="text" {...register("quantity")} />
                 <input className='mb-2  py-2 px-3' placeholder='Photo Url' type="text" {...register("img")} />
+                <input className='mb-2  py-2 px-3' placeholder='Supplier' type="text" {...register("Supplier")} />
                 <input className='mb-2  py-2 px-3' placeholder='Your Email' type="email" value={user?.email} {...register("email")} />
                 <input className='mb-2 py-2 fs-5 btn btn-outline-primary' type="submit" />
             </form>

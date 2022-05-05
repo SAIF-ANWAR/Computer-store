@@ -6,8 +6,8 @@ import './Home.css'
 
 const Performance = () => {
     return (
-        <div className='container '>
-            <div className='row gx-4 mt-2 mb-3  py-3 shadow-sm'>
+        <div className='container mb-5'>
+            <div className='row gx-4 mt-2 mb-3 py-4 shadow-sm'>
                 <div className='col-md-6 p-3 '>
                     <div id='performance' style={{ backgroundColor: "#909094" }} className={`text-dark d-flex justify-content-start aligh-items-center px-2 border-0 shadow-lg`}>
                         <img style={{ height: "100px" }} width={100} src={logo} alt="" />

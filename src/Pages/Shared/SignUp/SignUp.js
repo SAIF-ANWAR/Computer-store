@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Loading from '../Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -14,7 +15,7 @@ const SignUp = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     if (user) {
         navigate('/')
     }
@@ -26,12 +27,17 @@ const SignUp = () => {
         const email = event.target.email?.value
         const password = event.target.password?.value
         const confirmPassword = event.target.confirmPassword?.value
-        createUserWithEmailAndPassword(email, password)
+        if (password !== confirmPassword) {
+            toast("Password don't match")
+        }
+        else {
+            createUserWithEmailAndPassword(email, password)
+        }
 
     }
     return (
         <div>
-            <div className=' box  mx-auto border p-4 mt-4 shadow'>
+            <div className=' box  mx-auto border p-4 mt-4 shadow mb-5'>
                 <Form onSubmit={handleSignUp} className='form'>
                     <h3 className='signupTitle'>Create an account</h3>
                     <Form.Group className="mb-3" >
@@ -46,15 +52,17 @@ const SignUp = () => {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Control name="cnfirmPassword" type="password" placeholder="Confirm Password" />
                     </Form.Group>
+                    <p className='text-danger'> {error?.message}</p>
                     <div className='d-flex justify-content-between px-1 '>
                         <p className='title'>Already have an account?</p>
-                        <Link to="/login">Please login</Link>
+                        <Link className='text-decoration-none' to="/login">Please login</Link>
                     </div>
-                    <Button className='d-flex mx-auto w-50 justify-content-center' variant="outline-primary" type="submit">
-                        <span>Sign Up</span>
+                    <Button className='d-flex mx-auto w-50 justify-content-center mb-4 mt-2' variant="outline-primary" type="submit">
+                        <span className='py-1'>Create Account</span>
                     </Button>
                 </Form>
                 <SocialLogin></SocialLogin>
+                <ToastContainer></ToastContainer>
             </div>
 
         </div>

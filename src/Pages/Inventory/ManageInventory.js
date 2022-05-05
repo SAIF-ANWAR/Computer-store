@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-
 import useProducts from '../../Hooks/useProducts';
+
 
 const ManageInventory = () => {
 
@@ -40,7 +40,7 @@ const ManageInventory = () => {
                     </thead>
                     {
                         products.map(product => <>
-                            <tbody>
+                            <tbody key={product._id}>
                                 <tr>
                                     <td>{product?.title}</td>
                                     <td>{product.description?.model}</td>

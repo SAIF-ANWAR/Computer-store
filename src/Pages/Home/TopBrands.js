@@ -8,12 +8,12 @@ import hp from '../../images/brands/hp.png'
 
 const TopBrands = () => {
     return (
-        <div className=' container mb-4 '>
+        <div className=' container mb-4 mt-2'>
             <div className='title-header mb-4'>
                 <p className='title-product d-block text-center fs-2 pb-2 pt-4'>Top Brands</p>
             </div>
 
-            <div className="container shadow-sm">
+            <div className="container shadow-sm mb-5">
                 <div className="row row-cols-6 align-items-center  brands bg-light">
                     <div className="col-md-2 col-4 align"><img className='img-fluid' src={asus} alt="asus-logo" /></div>
                     <div className="col-md-2 col-4"><img className='img-fluid' src={avita} alt="avita-logo" /></div>

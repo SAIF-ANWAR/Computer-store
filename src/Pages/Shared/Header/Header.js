@@ -5,11 +5,15 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import logo from '../../../images/logos/logo.png'
+import Loading from '../Loading/Loading';
 import './Header.css'
 
 
 const Header = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='py-0 saif' sticky='top'>
@@ -28,8 +32,6 @@ const Header = () => {
                             <NavDropdown.Item href="#action/3.3">lenovo</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.4">Asus</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.5">Chuwi</NavDropdown.Item>
-                            {/* <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                         </NavDropdown>
                     </Nav>
                     <Nav>
@@ -43,7 +45,7 @@ const Header = () => {
                             user ? <Button className='px-4 fs-6 ' onClick={() => signOut(auth)} as={Link} to="/login" variant="outline-secondary">Logout</Button>
                                 : <Button className='px-4 fs-6' as={Link} to="/login" variant="outline-secondary">Login</Button>
                         }
-                        {/* <button className='btn btn-light'>Login</button> */}
+                        {user || <><Button className='px-4 fs-6 mx-2' as={Link} to="/signup" variant="outline-secondary">SignUp</Button></>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

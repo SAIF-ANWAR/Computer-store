@@ -13,8 +13,8 @@ import Inventories from './Pages/Inventory/Inventories';
 import RequireAuth from './Pages/Shared/RequireAuth/RequireAuth';
 import ManageInventory from './Pages/Inventory/ManageInventory';
 import AddInventory from './Pages/Inventory/AddInventory';
-import MyItems from './MyItems/MyItems';
-
+import MyItems from './Pages/MyItems/MyItems'
+import Footer from './Pages/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -41,6 +41,7 @@ function App() {
         <Route path='/brands' element={<Brands></Brands>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
