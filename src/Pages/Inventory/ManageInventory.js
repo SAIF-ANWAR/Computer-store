@@ -8,9 +8,11 @@ const ManageInventory = () => {
 
     const navigate = useNavigate()
     const [products, setProducts] = useProducts()
+
     const handleAddInventory = () => {
         navigate('/AddInventory')
     }
+
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {

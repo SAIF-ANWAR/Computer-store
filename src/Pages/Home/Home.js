@@ -7,17 +7,13 @@ import banner3 from '../../images/banner/banner3.jpg';
 import Performance from './Performance';
 import './Home.css';
 import TopBrands from './TopBrands';
-import auth from '../../firebase.init';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import Loading from '../Shared/Loading/Loading';
+import { ArrowNarrowRightIcon } from '@heroicons/react/solid'
+
+
 
 const Home = () => {
     const navigate = useNavigate()
     const [products] = useProducts()
-    const [loading] = useAuthState(auth);
-    if (loading) {
-        return <Loading></Loading>
-    }
     const handleManageInventories = () => {
         navigate('/manageInventories')
     }
@@ -72,7 +68,7 @@ const Home = () => {
                                     <small>Quantity: {product?.quantity}</small>
                                 </div>
                                 <div>
-                                    <Button onClick={() => handleManageButton(product._id)} className='px-3 ' variant="outline-primary">Manage</Button>
+                                    <Button onClick={() => handleManageButton(product._id)} className='px-2 d-flex justify-content-between align-items-center ' variant="outline-primary">Manage <ArrowNarrowRightIcon width={"25px"} className="mt-1 mx-2"></ArrowNarrowRightIcon> </Button>
                                 </div>
                             </div>
                         </div>)
@@ -80,7 +76,7 @@ const Home = () => {
 
                 </div>
                 <div className='d-flex justify-content-end'>
-                    <Link to="/manageInventories" className=' mt-2 py-2 px-5 fs-5 btn btn-link' onClick={handleManageInventories} variant='outline-primary'> Manage Inventories</Link>
+                    <Link to="/manageInventories" className=' mt-2 py-2 px-5 fs-5 btn btn-link text-decoration-none' onClick={handleManageInventories} variant='outline-primary'> Manage Inventories <ArrowNarrowRightIcon width={"25px"} className="mt-1 mx-2"></ArrowNarrowRightIcon> </Link>
                 </div>
             </div>
             <TopBrands></TopBrands>

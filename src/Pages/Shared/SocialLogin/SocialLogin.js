@@ -30,6 +30,7 @@ const SocialLogin = () => {
                     <div className='px-3'>Or</div>
                     <div style={{ height: '1px' }} className="bg-primary w-100" ></div>
                 </div>
+                <p className='text-danger'>{error?.message}</p>
                 <div className='mt-4'>
                     <Button onClick={handleGoogleLogin} variant="outline-primary" className='d-block mx-auto mt-2 py-2 px-3'>
                         <img className='px-1' width={"37px"} src={google} alt="" />

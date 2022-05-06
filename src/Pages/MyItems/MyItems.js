@@ -8,7 +8,6 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
     const [products] = useProducts()
     const [myItems, setMyItems] = useState([])
-    console.log(myItems)
     useEffect(() => {
         const myCollection = products.filter(product => product?.email === user?.email)
         if (myCollection) {
@@ -26,7 +25,7 @@ const MyItems = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
-                    const remaining = myItems.filter(product => product._id !== id)
+                    const remaining = myItems?.filter(product => product._id !== id)
                     setMyItems(remaining)
                 })
         }
@@ -46,7 +45,7 @@ const MyItems = () => {
                     </tr>
                 </thead>
                 {
-                    myItems.map(item =>
+                    myItems?.map(item =>
                         <tbody key={item._id}>
                             <tr>
                                 <td>{item?.title}</td>

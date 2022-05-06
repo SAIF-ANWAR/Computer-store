@@ -2,6 +2,8 @@ import React from 'react';
 import fb from '../../../images/social/fb.png';
 import insta from '../../../images/social/insta.png'
 import twitter from '../../../images/social/twiter.png'
+
+
 const Footer = () => {
     return (
         <div style={{ backgroundColor: "#F5F5F7" }}>

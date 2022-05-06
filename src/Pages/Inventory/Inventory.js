@@ -24,7 +24,7 @@ const Inventory = () => {
         const result = quantityInEveryClick--
         const quantity = result.toString()
         const outPut = { quantity }
-        console.log(outPut)
+
         const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url, {
             method: "PUT",
@@ -38,6 +38,7 @@ const Inventory = () => {
                 let updatedProduct = products.find(product => product.quantity === laptop.quantity)
                 let newQuantity = result.toString()
                 const newObject = { ...updatedProduct, quantity: newQuantity }
+                console.log(newObject)
                 setLaptop(newObject)
                 // updatedProduct.quantity = result.toString()
                 // setLaptop(updatedProduct)
@@ -49,7 +50,7 @@ const Inventory = () => {
     const handleRestock = () => {
         const quantity = window.prompt("Enter the quantity", "")
         const output = { quantity }
-        console.log(output)
+
         if (isNaN(quantity) === true) {
             window.alert("please enter value")
         }
@@ -82,18 +83,18 @@ const Inventory = () => {
                 <div className="card text-center mb-3" >
                     <div className="row g-0">
                         <div className="col-md-6 col-sm-12">
-                            <img src={laptop.img} className="img-fluid rounded-start  border-bottom" alt="..." />
-                            <h3 className="card-title">{laptop.title}</h3>
+                            <img src={laptop?.img} className="img-fluid rounded-start  border-bottom" alt="..." />
+                            <h3 className="card-title">{laptop?.title}</h3>
                         </div>
                         <div className="col-md-6 col-sm-12">
                             <div className="card-body mt-3">
 
                                 <div className="card w-75 mx-auto text-start " style={{ "width": "18rem" }}>
                                     <div className="card-header">
-                                        Name :  {laptop.title}
+                                        Name :  {laptop?.title}
                                     </div>
                                     <div className="card-header">
-                                        Supplied By :  {laptop.Supplier}
+                                        Supplied By :  {laptop?.Supplier}
                                     </div>
                                     <div className="card-header">
                                         Description :
@@ -122,7 +123,7 @@ const Inventory = () => {
                     </div>
                 </div>
             </div>
-            <Button className='d-flex mx-auto' onClick={handleManageInventories} variant='outline-primary'> Manage Inventories</Button>
+            <Button className='d-flex mx-auto mb-4  mt-3' onClick={handleManageInventories} variant='outline-primary'> Manage Inventories</Button>
         </div >
     );
 };

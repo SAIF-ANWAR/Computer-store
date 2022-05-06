@@ -11,7 +11,7 @@ const Inventories = () => {
 
             <div className='inventory-container mx-4 my-1'>
                 {
-                    products.map(pd =>
+                    products?.map(pd =>
                         <InventoriesDetails key={pd._id} product={pd}></InventoriesDetails>
                     )
                 }

@@ -2,11 +2,12 @@ import React from 'react';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+
 const AddInventory = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        console.log(data)
+
         const url = `https://still-bastion-50699.herokuapp.com/laptops`
         fetch(url, {
             method: "POST",

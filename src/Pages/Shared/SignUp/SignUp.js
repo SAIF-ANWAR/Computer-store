@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
@@ -9,6 +9,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import './SignUp.css'
 
 const SignUp = () => {
+    const [updateProfile, updating] = useUpdateProfile(auth);
     const navigate = useNavigate()
     const [
         createUserWithEmailAndPassword,
@@ -22,16 +23,19 @@ const SignUp = () => {
     if (loading) {
         return <Loading></Loading>
     }
-    const handleSignUp = event => {
+    const handleSignUp = async (event) => {
         event.preventDefault()
+        const name = event.target.name?.value
         const email = event.target.email?.value
         const password = event.target.password?.value
         const confirmPassword = event.target.confirmPassword?.value
+
         if (password !== confirmPassword) {
             toast("Password don't match")
         }
         else {
-            createUserWithEmailAndPassword(email, password)
+            await createUserWithEmailAndPassword(email, password)
+            await updateProfile({ displayName: name })
         }
 
     }
@@ -41,7 +45,7 @@ const SignUp = () => {
                 <Form onSubmit={handleSignUp} className='form'>
                     <h3 className='signupTitle'>Create an account</h3>
                     <Form.Group className="mb-3" >
-                        <Form.Control type="text" placeholder="Enter Your Name" />
+                        <Form.Control name="name" type="text" placeholder="Enter Your Name" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control name="email" type="email" placeholder="Enter email" />
@@ -50,7 +54,7 @@ const SignUp = () => {
                         <Form.Control name="password" type="password" placeholder="Password" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Control name="cnfirmPassword" type="password" placeholder="Confirm Password" />
+                        <Form.Control name="confirmPassword" type="password" placeholder="Confirm Password" />
                     </Form.Group>
                     <p className='text-danger'> {error?.message}</p>
                     <div className='d-flex justify-content-between px-1 '>
