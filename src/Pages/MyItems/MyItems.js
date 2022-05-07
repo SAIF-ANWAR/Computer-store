@@ -33,8 +33,7 @@ const MyItems = () => {
 
     return (
         <div className='container p-5'>
-            <h1>{myItems?.length}</h1>
-            <h2>Products Added By {user?.email} </h2>
+            <h2 className='py-4 text-center'>Items Added By <span className='text-primary'>{user?.displayName} </span></h2>
             <Table className='table table-bordered  align-middle' responsive="sm">
                 <thead >
                     <tr>
