@@ -8,12 +8,15 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
     const [products] = useProducts()
     const [myItems, setMyItems] = useState([])
+    console.log(myItems)
+    console.log(user?.email)
     useEffect(() => {
         const myCollection = products.filter(product => product?.email === user?.email)
         if (myCollection) {
             setMyItems(myCollection)
         }
     }, [products, user?.email])
+
 
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure?')
@@ -24,7 +27,6 @@ const MyItems = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     const remaining = myItems?.filter(product => product._id !== id)
                     setMyItems(remaining)
                 })
@@ -33,6 +35,7 @@ const MyItems = () => {
 
     return (
         <div className='container p-5'>
+            <h1>{myItems?.length}</h1>
             <h2>Products Added By {user?.email} </h2>
             <Table className='table table-bordered  align-middle' responsive="sm">
                 <thead >

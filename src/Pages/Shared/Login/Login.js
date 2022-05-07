@@ -4,13 +4,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import login from '../../../images/login.jpg';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Login.css'
 import Loading from '../Loading/Loading';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+    const [tokenUser] = useAuthState(auth)
+    console.log(tokenUser?.email)
     const location = useLocation()
     const navigate = useNavigate()
     const emailRef = useRef('')
@@ -32,12 +34,28 @@ const Login = () => {
 
     let from = location.state?.from?.pathname || "/";
 
-    const handleLogin = event => {
+    const handleLogin = async event => {
         event.preventDefault()
         const email = event.target.email.value
         const password = event.target.password.value
 
-        signInWithEmailAndPassword(email, password)
+        await signInWithEmailAndPassword(email, password)
+
+        const url = `http://localhost:5000/login`
+        fetch(url, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                localStorage.setItem('accessToken', result.accessToken)
+                navigate(from, { replace: true })
+            })
+
     }
     const resetPassword = async (event) => {
         event.preventDefault()
@@ -51,9 +69,9 @@ const Login = () => {
         }
     }
 
-    if (user) {
-        navigate(from, { replace: true })
-    }
+    // if (user) {
+    //     navigate(from, { replace: true })
+    // }
     return (
         <div className='container py-5'>
             <div className='row'>

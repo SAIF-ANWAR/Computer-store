@@ -1,4 +1,13 @@
 # Getting Started with Create React App
+Ths is an nventory management website of computers. [Lin]()
+
+In this website:
+1.you will see inventroy items in the home page.
+2.There is a button called Manage Inventories
+3.After clicking on the Manage button you will be able to update or restock the items in the inventory
+4.In the Add inventory page you will be able to add new items in the inventory
+5.You will find the items you have updated in the Myitems page
+6. You wiil also be able to delete the items.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

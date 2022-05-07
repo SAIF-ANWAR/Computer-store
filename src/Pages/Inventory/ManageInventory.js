@@ -26,6 +26,7 @@ const ManageInventory = () => {
                     setProducts(remaining)
                 })
         }
+
     }
     return (
         <div>

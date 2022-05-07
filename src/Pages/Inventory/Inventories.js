@@ -1,11 +1,9 @@
-import React from 'react';
 import useProducts from '../../Hooks/useProducts';
 import './Inventories.css';
 import InventoriesDetails from './InventoriesDetails';
 
 const Inventories = () => {
     const [products] = useProducts()
-
     return (
         <div>
 
@@ -15,6 +13,8 @@ const Inventories = () => {
                         <InventoriesDetails key={pd._id} product={pd}></InventoriesDetails>
                     )
                 }
+
+
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import useProducts from '../../Hooks/useProducts';
@@ -46,14 +46,16 @@ const Inventory = () => {
                 // console.log('success', data)
             })
     }
-
-    const handleRestock = () => {
-        const quantity = window.prompt("Enter the quantity", "")
+    const countRef = useRef('')
+    const handleRestock = (event) => {
+        event.preventDefault()
+        const number = parseFloat(countRef.current?.value)
+        const newQuantity = number + itemQuantity
+        const quantity = newQuantity
+        event.target.reset()
         const output = { quantity }
+        console.log(output)
 
-        if (isNaN(quantity) === true) {
-            window.alert("please enter value")
-        }
         const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url, {
             method: "PUT",
@@ -65,14 +67,14 @@ const Inventory = () => {
             .then(res => res.json())
             .then(data => {
                 let updatedProduct = products.find(product => product.quantity === laptop.quantity)
-                // updatedProduct.quantity = quantity
-                // setLaptop(updatedProduct)
+
                 console.log('success', data)
                 let newQuantity = quantity
                 const newObject = { ...updatedProduct, quantity: newQuantity }
                 setLaptop(newObject)
                 console.log(newObject)
             })
+
     }
     const handleManageInventories = () => {
         navigate('/manageInventories')
@@ -114,10 +116,14 @@ const Inventory = () => {
                                     </div>
                                     <div className="card-header">
                                         <Button onClick={() => handleDelivered(laptop._id)} variant='outline-primary'>Delivered</Button>
-                                        <Button onClick={handleRestock} variant='outline-primary px-3 mx-3'>Restock</Button>
+
                                     </div>
+                                    <form onSubmit={handleRestock} className="px-2">
+                                        <input ref={countRef} className='border border-primary mt-2 py-1' name="count" type="number" placeholder='Enter quantity' />
+                                        <input className='btn btn-outline-primary px-3 mx-3' type="submit" value="Restock" />
+
+                                    </form>
                                 </div>
-                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                             </div>
                         </div>
                     </div>
