@@ -8,8 +8,6 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
     const [products] = useProducts()
     const [myItems, setMyItems] = useState([])
-    console.log(myItems)
-    console.log(user?.email)
     useEffect(() => {
         const myCollection = products.filter(product => product?.email === user?.email)
         if (myCollection) {

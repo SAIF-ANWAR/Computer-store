@@ -40,10 +40,6 @@ const Inventory = () => {
                 const newObject = { ...updatedProduct, quantity: newQuantity }
                 console.log(newObject)
                 setLaptop(newObject)
-                // updatedProduct.quantity = result.toString()
-                // setLaptop(updatedProduct)
-                // console.log(updatedProduct)
-                // console.log('success', data)
             })
     }
     const countRef = useRef('')
@@ -54,7 +50,6 @@ const Inventory = () => {
         const quantity = newQuantity
         event.target.reset()
         const output = { quantity }
-        console.log(output)
 
         const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url, {
@@ -72,7 +67,6 @@ const Inventory = () => {
                 let newQuantity = quantity
                 const newObject = { ...updatedProduct, quantity: newQuantity }
                 setLaptop(newObject)
-                console.log(newObject)
             })
 
     }
@@ -116,7 +110,6 @@ const Inventory = () => {
                                     </div>
                                     <div className="card-header">
                                         <Button onClick={() => handleDelivered(laptop._id)} variant='outline-primary'>Delivered</Button>
-
                                     </div>
                                     <form onSubmit={handleRestock} className="px-2">
                                         <input ref={countRef} className='border border-primary mt-2 py-1' name="count" type="number" placeholder='Enter quantity' />
