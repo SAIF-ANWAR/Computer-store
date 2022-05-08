@@ -80,7 +80,7 @@ const Inventory = () => {
                     <div className="row g-0">
                         <div className="col-md-6 col-sm-12">
                             <img src={laptop?.img} className="img-fluid rounded-start  border-bottom" alt="..." />
-                            <h3 className="card-title">{laptop?.title}</h3>
+                            <h3 style={{ color: "#5BC8E7" }} className="card-title mt-2">{laptop?.title}</h3>
                         </div>
                         <div className="col-md-6 col-sm-12">
                             <div className="card-body mt-3">

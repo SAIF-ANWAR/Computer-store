@@ -12,8 +12,40 @@
 .title-product::after {
     content: "";
     height: 4px;
-    width: 174px;
-    background: #959599;
+    width: 190px;
+    background: #50595e;
+    position: absolute;
+    bottom: 0;
+    left: 43%;
+}
+
+.title-product {
+    color: #5BC8E7;
+    font-weight: 700;
+    font-size: 34px;
+}
+
+.topBrnads {
+    color: #5BC8E7;
+    font-weight: 700;
+    font-size: 34px;
+}
+
+.topBrnads::after {
+    content: "";
+    height: 4px;
+    width: 190px;
+    background: #50595e;
+    position: absolute;
+    bottom: 0;
+    left: 42%;
+}
+
+.title-inventory::after {
+    content: "";
+    height: 4px;
+    width: 190px;
+    background: #163c52;
     position: absolute;
     bottom: 0;
     left: 43%;
@@ -22,6 +54,33 @@
 #performance img {
     margin-top: 24px;
 
+}
+
+#performance-2 img {
+    margin-top: 24px;
+
+}
+
+.performance {
+    background-color: #909094;
+}
+
+.performance:hover {
+    background-color: #afafbb;
+}
+
+.performance-2 {
+    background-color: #FBFBFD;
+}
+
+.performance-2:hover {
+    background-color: #afafbb;
+    color: black;
+}
+
+.item:hover {
+    transform: scale(1.1);
+    transition: 1s;
 }
 
 @media only screen and (max-width: 480px) {
@@ -33,10 +92,20 @@
     .title-product::after {
         content: "";
         height: 4px;
-        width: 90px;
-        background: #ff523b;
+        width: 135px;
+        background: #163c52;
         position: absolute;
         bottom: 0;
-        left: 39%;
+        left: 33%;
+    }
+
+    .topBrnads::after {
+        content: "";
+        height: 4px;
+        width: 135px;
+        background: #163c52;
+        position: absolute;
+        bottom: 0;
+        left: 33%;
     }
 }

@@ -9,7 +9,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import './SignUp.css'
 
 const SignUp = () => {
-    const [updateProfile, updating] = useUpdateProfile(auth);
+    const [updateProfile] = useUpdateProfile(auth);
     const navigate = useNavigate()
     const [
         createUserWithEmailAndPassword,
@@ -43,7 +43,7 @@ const SignUp = () => {
         <div>
             <div className=' box  mx-auto border p-4 mt-4 shadow mb-5'>
                 <Form onSubmit={handleSignUp} className='form'>
-                    <h3 className='signupTitle'>Create an account</h3>
+                    <h3 style={{ color: "#5BC8E7" }} className='signupTitle'>Create an account</h3>
                     <Form.Group className="mb-3" >
                         <Form.Control name="name" type="text" placeholder="Enter Your Name" />
                     </Form.Group>

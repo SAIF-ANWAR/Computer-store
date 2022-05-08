@@ -6,11 +6,12 @@ import dell from '../../images/brands/dell.png'
 import chuwi from '../../images/brands/chuwi.png'
 import hp from '../../images/brands/hp.png'
 
+
 const TopBrands = () => {
     return (
         <div className=' container mb-4 mt-2'>
-            <div className='title-header mb-4'>
-                <p className='title-product d-block text-center fs-2 pb-2 pt-4'>Top Brands</p>
+            <div className='title-header mb-5'>
+                <p className='topBrnads d-block text-center fs-2 pb-2 pt-4'>Top Brands</p>
             </div>
 
             <div className="container shadow-sm mb-5">

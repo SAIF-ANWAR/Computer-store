@@ -6,7 +6,9 @@ const Inventories = () => {
     const [products] = useProducts()
     return (
         <div>
-
+            <div className='title-header'>
+                <h1 style={{ color: "#5BC8E7" }} className='title-inventory text-center py-1 fw-bold mt-2 mb-4'>All Items</h1>
+            </div>
             <div className='inventory-container mx-4 my-1'>
                 {
                     products?.map(pd =>

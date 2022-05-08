@@ -9,7 +9,7 @@ const Performance = () => {
         <div className='container mb-5'>
             <div className='row gx-4 mt-2 mb-3 py-4 shadow-sm'>
                 <div className='col-md-6 p-3 '>
-                    <div id='performance' style={{ backgroundColor: "#909094" }} className={`text-dark d-flex justify-content-start aligh-items-center px-2 border-0 shadow-lg`}>
+                    <div id='performance' className={`text-dark d-flex justify-content-start aligh-items-center px-2 border-0 shadow-lg performance`}>
                         <img style={{ height: "100px" }} width={100} src={logo} alt="" />
                         <div className='d-flex flex-column justify-content-start py-5 px-3'>
                             <span className='fs-4 fw-normal pb-1'>Discover best rated items</span>
@@ -18,7 +18,7 @@ const Performance = () => {
                     </div>
                 </div>
                 <div className='col-md-6 p-3 '>
-                    <div id='performance' style={{ backgroundColor: "#FBFBFD" }} className={`text-dark d-flex justify-content-start aligh-items-center px-2 shadow-lg`}>
+                    <div id='performance-2' className={`text-dark d-flex justify-content-start aligh-items-center px-2 shadow-lg performance-2`}>
                         <img style={{ height: "100px" }} width={100} src={logo} alt="" />
                         <div className='d-flex flex-column justify-content-start py-5 px-3'>
                             <span className='fs-4 fw-normal pb-1'>Discover best selling items</span>

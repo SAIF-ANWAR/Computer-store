@@ -12,7 +12,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='py-0 saif' sticky='top'>
+        <Navbar style={{ backgroundColor: "#b1d8e6" }} variant="light" collapseOnSelect expand="lg" className='py-0 header ' sticky='top'>
             <Container>
                 <Navbar.Brand as={Link} to="/" href="#home"><img height={70} width={80} src={logo} alt="" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

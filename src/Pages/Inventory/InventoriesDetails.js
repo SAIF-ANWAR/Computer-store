@@ -13,8 +13,8 @@ const InventoriesDetails = ({ product }) => {
     }
 
     return (
-        <div className='cotnainer mb-5'>
-            <div className='container border-0  shadow py-2 px-3'>
+        <div className='cotnainer mt-2 mb-2'>
+            <div className='item container border-0  shadow py-2 px-3'>
                 <div className='product-image'>
                     <img className='rounded mx-auto d-block img-fluid' src={product?.img} alt="" />
                 </div>

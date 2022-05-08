@@ -49,12 +49,12 @@ const Home = () => {
                 </Carousel>
             </div>
             <div className='title-header my-2'>
-                <p className='title-product d-block text-center fs-2 pb-2 pt-4'>Laptops</p>
+                <p className='title-product d-block text-center pb-2 pt-4'>Laptops</p>
             </div>
             <div className='container py-3'>
                 <div className='product-home'>
                     {
-                        products.slice(0, 6).map(product => <div key={product._id} className='container border border-light rounded shadow-sm py-2 px-3'>
+                        products.slice(0, 6).map(product => <div key={product._id} className='item container border border-light rounded shadow-sm py-2 px-3'>
                             <div className='product-image'>
                                 <img className='rounded mx-auto d-block img-fluid px-3' src={product?.img} alt="" />
                             </div>

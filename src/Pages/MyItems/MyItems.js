@@ -33,7 +33,7 @@ const MyItems = () => {
 
     return (
         <div className='container p-5'>
-            <h2 className='py-4 text-center'>Items Added By <span className='text-primary'>{user?.displayName} </span></h2>
+            <h2 className='py-4 text-center'>Items Added By <span style={{ color: "#5BC8E7" }} className="fw-bold">{user?.displayName} </span></h2>
             <Table className='table table-bordered  align-middle' responsive="sm">
                 <thead >
                     <tr>
