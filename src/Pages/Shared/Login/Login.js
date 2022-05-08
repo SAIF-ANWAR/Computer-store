@@ -81,7 +81,7 @@ const Login = () => {
                 <div className='col-lg-6 col-sm-12'>
                     <div className='w-75 mx-auto '>
                         <Form onSubmit={handleLogin} className=' mt-3 '>
-                            <h3 style={{ color: "#5BC8E7" }} className='mb-4 fs-2 '>Please Log In</h3>
+                            <h3 style={{ color: "#21768d" }} className='mb-4 fs-2 '>Please Log In</h3>
                             <Form.Group className="mb-3 mt-2" controlId="formBasicEmail">
                                 <Form.Control className='py-2' ref={emailRef} name="email" type="email" placeholder="Enter email" />
                             </Form.Group>
